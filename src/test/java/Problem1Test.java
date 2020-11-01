@@ -50,7 +50,7 @@ public class Problem1Test {
 
     private List<PermutationTestCase> getTestCases() {
         List<PermutationTestCase> testCases = new ArrayList<>();
-        testCases.add(new PermutationTestCase(new int[]{}, Arrays.asList(Collections.emptyList())));
+        //testCases.add(new PermutationTestCase(new int[]{}, Arrays.asList(Collections.emptyList())));
         testCases.add(new PermutationTestCase(new int[]{2}, Arrays.asList(Arrays.asList(2))));
         testCases.add(new PermutationTestCase(new int[]{1, 2}, Arrays.asList(Arrays.asList(1, 2), Arrays.asList(2, 1))));
         testCases.add(new PermutationTestCase(
