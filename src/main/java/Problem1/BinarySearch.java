@@ -11,7 +11,7 @@ public class BinarySearch {
     }
 
     private static int helperSearch(int[] data, int target, int start, int end){
-        int mid = (end + start) / 2;
+        int mid = start + (end-start)/2;
         if(data[mid] < target){
             start = mid + 1;
             return helperSearch(data, target, start, end);
