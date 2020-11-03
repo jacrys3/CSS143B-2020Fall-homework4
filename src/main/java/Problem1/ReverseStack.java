@@ -11,6 +11,7 @@ public class ReverseStack {
     private static void helperReverse(Stack<Integer> stack, int l, int r) {
         if(l >= r) return;
         int tmp = stack.get(l);
+
         stack.set(l, stack.get(r));
         stack.set(r, tmp);
         helperReverse(stack, l + 1, r - 1);

@@ -5,8 +5,7 @@ public class BinarySearch {
     // Do not change signature (return type, function name, parameter types)
     // Add a helper function for recursion calls
     public static int binarySearch(int[] data, int target) {
-        if(data.length == 0 || (data.length == 1 && data[0] != target)) return -1;
-        else if(data.length == 1 && data[0] == target) return 0;
+        if(data.length == 0) return -1;
         return helperSearch(data, target, 0, data.length);
     }
 
