@@ -20,16 +20,16 @@ public class Permutation {
             perm.add(list);
         } else {
             for (int j = n, l = nums.length; j < l; j++) {
-                int temp = nums[j];
-                nums[j] = nums[n];
-                nums[n] = temp;
+                swap(nums, j, n);
                 helperPermutation(n + 1, nums, perm);
-                temp = nums[j];
-                nums[j] = nums[n];
-                nums[n] = temp;
+                swap(nums, j, n);
             }
         }
     }
-
+    public static void swap(int[] nums, int p1, int p2){
+        int temp = nums[p1];
+        nums[p1] = nums[p2];
+        nums[p2] = temp;
+    }
 
 }
