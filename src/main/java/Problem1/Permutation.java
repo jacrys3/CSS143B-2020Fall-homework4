@@ -1,36 +1,35 @@
 package Problem1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Permutation {
-    public static List<List<Integer>> permute(int[] nums) {
-        ArrayList perm = new ArrayList<>();
-        ArrayList data = new ArrayList(Arrays.asList(nums));
-        helperPermute(data, perm, nums.length);
-        return perm;
-    }
-    private static void helperPermute(ArrayList nums, ArrayList perm, int n){
-        if(n == 1){
-            perm.add(nums);
-            return;
-        }
 
-        for (int i = 0; i < n - 1; i++) {
-            helperPermute(nums, perm, n - 1);
-            if(n % 2 == 0){
-                swap(nums, i, n-1);
-                perm.add(nums);
-            } else{
-                swap(nums, 0, n-1);
-                perm.add(nums);
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        helperPermutation(0, nums, result);
+        return result;
+    }
+    // help online from w3resource.com
+    private static void helperPermutation(int n, int[] nums, List<List<Integer>> perm) {
+        if (n == nums.length - 1) {
+            List<Integer> list = new ArrayList<>();
+            for (int i : nums){
+                list.add(i);
+            }
+            perm.add(list);
+        } else {
+            for (int j = n, l = nums.length; j < l; j++) {
+                int temp = nums[j];
+                nums[j] = nums[n];
+                nums[n] = temp;
+                helperPermutation(n + 1, nums, perm);
+                temp = nums[j];
+                nums[j] = nums[n];
+                nums[n] = temp;
             }
         }
     }
-    private static void swap(ArrayList nums, int p1, int p2){
-        int tmp = (int) nums.get(p1);
-        nums.set(p1, nums.get(p2));
-        nums.set(p1, tmp);
-    }
+
+
 }
