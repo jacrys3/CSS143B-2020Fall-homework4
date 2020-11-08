@@ -17,29 +17,31 @@ public class SortList {
     }
 
     public static ListNode findMidAndBreak(ListNode head) {
-        if(head.next == null) return null;
+        if(head == null) return null;
         ListNode fast = head, slow = head;
-        ListNode sec;
-        while(fast.next != null){
-            fast = fast.next;
-
-            if(fast.next == null){
-                sec = slow;
-                slow = null;
-                return sec;
-            }
+        while(fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
             slow = slow.next;
-            fast = fast.next;
         }
-
-        sec = slow.next;
+        ListNode sec = slow.next;
         slow.next = null;
         return sec;
     }
 
 
     public static ListNode mergeLists(ListNode list1, ListNode list2) {
-        // homework
-        return null;
+        //help from geeksforgeeks.com
+        if (list1 == null)
+            return list2;
+        if (list2 == null)
+            return list1;
+        if (list1.val < list2.val) {
+            list1.next = mergeLists(list1.next, list2);
+            return list1;
+        }
+        else {
+            list2.next = mergeLists(list1, list2.next);
+            return list2;
+        }
     }
 }
